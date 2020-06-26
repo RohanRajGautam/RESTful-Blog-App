@@ -20,8 +20,9 @@ const blogSchema = mongoose.Schema({
 
 const Blog = mongoose.model('Blog', blogSchema);
 
-// ROUTES
+// ------- ROUTES ------------
 
+// INDEX ROUTE
 app.get('/', (req, res) => {
   res.redirect('/blogs');
 })
@@ -36,4 +37,24 @@ app.get('/blogs', (req, res) => {
   })
 })
 
+// NEW ROUTE
+app.get('/blogs/new', (req, res) => {
+  res.render('new');
+})
+
+// CREATE ROUTE
+app.post('/blogs', (req, res) => {
+  //create a post
+  Blog.create(req.body.blog, (err, newBlog) => {
+    if (err) {
+      res.render('new');
+    } else {
+      // then redirect to index
+      res.redirect('/blogs');
+    }
+  })
+})
+
+
+// LISTENING TO PORT
 app.listen(port, () => console.log(`server listening at https://localhost:${port}`));
