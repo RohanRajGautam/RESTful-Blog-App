@@ -1,15 +1,30 @@
 <%- include ('./partials/header') %>
 
-<h1>Hey there, welcome to my blog site.</h1>
-
-<% blogs.forEach((blog)=>{ %>
-<div>
-  <h3><%= blog.title %></h3>
-  <img src="<%= blog.image %>" alt="<%= blog.title %>">
-  <p><%= blog.created.toDateString() %></p>
-  <p><%= blog.body.substring(0,100) %>...</p>
-  <span><a href="/blogs/<%- blog._id %>">Read more</a></span>
+<div class="ui main text container">
+  <div class="ui huge header">Welcome to my RESTful Blog App</div>
+  <div class="ui top attached segment">
+    <div class="ui divided items">
+      <% blogs.forEach((blog)=>{ %>
+      <div class="item">
+        <div class="ui small image">
+          <img src="<%= blog.image %>" alt="<%= blog.title %>">
+        </div>
+        <div class="content">
+          <a href="/blogs/<%- blog._id %>" class="header"><%= blog.title %></a>
+          <div class="meta">
+            <span><%= blog.created.toDateString() %></span>
+          </div>
+          <div class="description">
+            <p><%- blog.body.substring(0,100) %>...</p>
+          </div>
+          <div class="extra">
+            <a class="ui floated right basic green button" href="/blogs/<%- blog._id %>">Read more</a>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
 </div>
-<% }) %>
 
 <%- include ('./partials/footer') %>

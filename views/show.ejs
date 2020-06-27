@@ -2,19 +2,25 @@
 
 <div class="ui main text container segment">
   <div class="ui huge header"><%- blog.title %></div>
+  <div class="ui section divider"></div>
   <div class="ui top attached">
     <div class="item">
       <img class="ui image centered rounded" src="<%= blog.image %>" alt="<%= blog.title %>">
+      <div class="ui section divider"></div>
       <div class="content">
         <span><%= blog.created.toDateString() %></span>
       </div>
+      <div class="ui hidden divider"></div>
       <div class="description">
         <p><%- blog.body %></p>
       </div>
-      <a href="/blogs/<%= blog._id %>/edit" class="ui button primary">Edit</a>
-      <form id="inline-btn" action="/blogs/<%=blog._id%>?_method=DELETE" method="POST">
-        <button class="ui red button">Delete Blog</button>
-      </form>
+      <div class="ui section divider"></div>
+      <div class="segment">
+        <a href="/blogs/<%= blog._id %>/edit" class="ui button primary">Edit</a>
+        <form id="inline-btn" action="/blogs/<%=blog._id%>?_method=DELETE" method="POST">
+          <button class="ui right floated red button ">Delete Blog</button>
+        </form>
+      </div>
     </div>
   </div>
 </div>

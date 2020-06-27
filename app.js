@@ -1,5 +1,6 @@
 const bodyParser = require('body-parser'),
   methodOverride = require('method-override'),
+  expressSanitizer = require('express-sanitizer'),
   mongoose = require('mongoose'),
   express = require('express'),
   app = express();
@@ -10,7 +11,8 @@ mongoose.connect('mongodb://localhost/blog_app', { useNewUrlParser: true, useUni
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(methodOverride('_method'))
+app.use(expressSanitizer());
+app.use(methodOverride('_method'));
 
 //  MONGOOSE/MODEL CONFIG
 const blogSchema = mongoose.Schema({
@@ -46,6 +48,8 @@ app.get('/blogs/new', (req, res) => {
 
 // CREATE ROUTE
 app.post('/blogs', (req, res) => {
+  //sanitizing the code
+  req.body.blog.body = req.sanitize(req.body.blog.body);
   //create a post
   Blog.create(req.body.blog, (err, newBlog) => {
     if (err) {
@@ -70,6 +74,7 @@ app.get('/blogs/:id', (req, res) => {
 
 // EDIT ROUTES
 app.get('/blogs/:id/edit', (req, res) => {
+  //redirect to edit page
   Blog.findById(req.params.id, (err, foundBlog) => {
     if (err) {
       res.redirect('/blogs');
@@ -81,6 +86,9 @@ app.get('/blogs/:id/edit', (req, res) => {
 
 // UPDATE ROUTE
 app.put('/blogs/:id', (req, res) => {
+  //sanitizing the code
+  req.body.blog.body = req.sanitize(req.body.blog.body);
+  //update the post
   Blog.findByIdAndUpdate(req.params.id, req.body.blog, (err, updatedBlog) => {
     if (err) {
       res.redirect('edit');
