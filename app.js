@@ -4,7 +4,7 @@ const bodyParser = require('body-parser'),
   mongoose = require('mongoose'),
   express = require('express'),
   app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // APP CONFIG
 mongoose.connect('mongodb://localhost/blog_app', { useNewUrlParser: true, useUnifiedTopology: true });
