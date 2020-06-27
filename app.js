@@ -90,5 +90,17 @@ app.put('/blogs/:id', (req, res) => {
   })
 })
 
+// DELETE ROUTE
+app.delete('/blogs/:id', (req, res) => {
+  Blog.findByIdAndDelete(req.params.id, err => {
+    if (err) {
+      res.redirect('/blogs')
+    } else {
+      res.redirect('/blogs')
+    }
+  })
+})
+
+
 // LISTENING TO PORT
 app.listen(port, () => console.log(`server listening at https://localhost:${port}`));

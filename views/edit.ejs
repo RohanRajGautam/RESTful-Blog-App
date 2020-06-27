@@ -2,7 +2,7 @@
 
 <div class="ui main text container segment">
   <div class="ui huge header">Edit "<%= blog.title %>" </div>
-  <form action="/blogs/<%= blog._id %>?_method=PUT" method="POST" class="ui form">
+  <form id="inline-btn" action="/blogs/<%= blog._id %>?_method=PUT" method="POST" class="ui form">
     <div class="field">
       <label for="title">Title</label>
       <input type="text" name="blog[title]" id="title" value="<%= blog.title %>">
@@ -16,8 +16,8 @@
       <textarea name="blog[body]" id="desc" placeholder="Blog post goes here"><%= blog.body %></textarea>
     </div>
     <button class="ui primary button">Save</button>
-    <button class="ui button">Discard</button>
   </form>
+  <a href="/blogs/<%= blog._id %>" class="ui button">Discard</a>
 </div>
 
 <%- include ('./partials/footer') %>

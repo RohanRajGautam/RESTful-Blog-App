@@ -2,7 +2,7 @@
 
 <div class="ui main text container segment">
   <div class="ui huge header">New Blog</div>
-  <form action="/blogs" method="POST" class="ui form">
+  <form action="/blogs" method="POST" class="ui form" id="inline-btn">
     <div class="field">
       <label for="title">Title</label>
       <input type="text" name="blog[title]" id="title" placeholder="Title">
@@ -16,8 +16,8 @@
       <textarea name="blog[body]" id="desc" placeholder="Blog post goes here"></textarea>
     </div>
     <button class="ui primary button">Save</button>
-    <button class="ui button">Discard</button>
   </form>
+  <a href="/blogs" class="ui button">Discard</button>
 </div>
 
 <%- include ('./partials/footer') %>
