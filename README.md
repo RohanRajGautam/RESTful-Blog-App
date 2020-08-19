@@ -11,6 +11,8 @@ RESTful Blog App is an application that uses Express.js, Node.js, and MongoDB to
 
 ![frontpage](https://i.imgur.com/0PDL9Tg.png)
 
+---
+
 ![blogpage](https://i.imgur.com/aXCvZhG.png)
 
 ---
