@@ -7,6 +7,14 @@ RESTful Blog App is an application that uses Express.js, Node.js, and MongoDB to
 * The user can also create a new post using the link in the navigation bar.
 * Users can edit and delete each post once they click "Read More" on the desired post.
 
+---
+
+![frontpage](https://i.imgur.com/0PDL9Tg.png)
+
+![blogpage](https://i.imgur.com/aXCvZhG.png)
+
+---
+
 ### Technologies Used
 * JavaScript
 * Semantic UI
